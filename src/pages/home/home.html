@@ -1,32 +1,19 @@
 <ion-header>
-    <ion-navbar color="moph">
+    <ion-navbar color="dark">
       <ion-title>
-        MOPH
+        myApp
       </ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content padding>
-    <p>
-      สวัสดี {{name}} {{lname}}</p>
-    <ion-item>
-      <ion-label fixed>ชื่อ</ion-label>
-      <ion-input type="text" [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>นามสกุล</ion-label>
-      <ion-input type="text" [(ngModel)]="lname"></ion-input>
-    </ion-item>
-    <!-- <ion-list>
-      <ion-item *ngFor="let a of age">
-        {{a}}
-      </ion-item>
-    </ion-list> -->
-    <ion-list>
-      <button ion-item *ngFor="let u of users" (click)='detail(u)'>
-        {{u.name}}
-        <p>อายุ {{u.age}} ปี</p>
+    <ion-list no-lines >
+      <button ion-item *ngFor="let a of avatars">
+        <ion-avatar item-start>
+          <img src="{{a.picture.medium}}">
+        </ion-avatar>
+        <h2>{{a.name.title}}.{{a.name.first}} {{a.name.last}}</h2>
+        <p>{{a.email}}</p>
       </button>
     </ion-list>
-    <button ion-button full>Submit</button>
   </ion-content>

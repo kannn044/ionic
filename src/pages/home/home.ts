@@ -1,5 +1,6 @@
+import { AvatarProvider } from '../../providers/avatar/avatar';
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController,LoadingController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 
 @Component({
@@ -7,17 +8,38 @@ import { DetailPage } from '../detail/detail';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  avatars =[]
 
-  //name='Tan';
-  //age = ['<18', '18-25', '26-40', '41-50', '51>'];
-  //age= ['1','2','3']
   users = [
     { id: 1, name: 'สมชัย พิทักษ์กุล' ,age:'40'},
     { id: 2, name: 'สมชาย เชิงพงพัฒน์' ,age:'45'},
     { id: 3, name: 'สมควร ใจดี' ,age:'47'}
   ];
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController) {
-
+  constructor(
+    public navCtrl: NavController,
+    private alertCtrl: AlertController,
+    private AvatarProvider: AvatarProvider,
+    private LoadingCtrl: LoadingController
+  ) {
+    
+  }
+  ionViewWillEnter(){
+    this.getAvatars()
+    console.log(this.avatars);
+  }
+  async getAvatars(){
+    const loading = this.LoadingCtrl.create({
+      content: 'Loading...'
+    })  
+    try {
+      this.avatars=[]
+      loading.present()
+      const resp = await this.AvatarProvider.getAvatars()
+      this.avatars = resp.results
+      loading.dismiss()
+    } catch (error) {
+      
+    }
   }
   showme(u:any) {
     let alert = this.alertCtrl.create({
