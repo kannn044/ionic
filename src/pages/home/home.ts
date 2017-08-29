@@ -38,7 +38,7 @@ export class HomePage {
       this.avatars = resp.results
       loading.dismiss()
     } catch (error) {
-      
+      loading.dismiss()
     }
   }
   showme(u:any) {
