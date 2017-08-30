@@ -26,8 +26,8 @@ export class HomePage {
 
   }
   ionViewWillEnter() {
-    this.getAvatars()
-    console.log(this.avatars);
+    this.getPerson()
+    // console.log(this.avatars);
   }
   async getAvatars() {
     const loading = this.loadingCtrl.create({
@@ -38,6 +38,20 @@ export class HomePage {
       loading.present()
       const resp = await this.avatarProvider.getAvatars()
       this.avatars = resp.results
+      loading.dismiss()
+    } catch (error) {
+      loading.dismiss()
+    }
+  }
+  async getPerson() {
+    const loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    })
+    try {
+      this.avatars = []
+      loading.present()
+      const resp = await this.avatarProvider.getPerson()
+      this.avatars = resp
       loading.dismiss()
     } catch (error) {
       loading.dismiss()

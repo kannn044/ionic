@@ -12,4 +12,10 @@ export class AvatarProvider {
     const resp = await this.http.get('https://randomuser.me/api/?results=10').toPromise()
     return resp.json() 
   }
+  async getPerson(){
+    const token = localStorage.getItem('token')
+    const url = `http://192.168.100.116:3000/api/person?token=${token}`
+    const resp = await this.http.get(url).toPromise()
+    return resp.json() 
+  }
 }

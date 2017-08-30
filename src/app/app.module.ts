@@ -8,12 +8,14 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPageModule } from '../pages/login/login.module';
 
 import { DetailPageModule } from '../pages/detail/detail.module';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
 import { SettingPageModule } from '../pages/setting/setting.module';
 import { AvatarProvider } from '../providers/avatar/avatar';
+import { LoginProvider } from '../providers/login/login';
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +28,8 @@ import { AvatarProvider } from '../providers/avatar/avatar';
     TabsPageModule,
     DashboardPageModule,
     SettingPageModule,
-    HttpModule
+    HttpModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +41,8 @@ import { AvatarProvider } from '../providers/avatar/avatar';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AvatarProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    LoginProvider
   ]
 })
 export class AppModule {}
