@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { AddPersonPage } from '../add-person/add-person';
 
 @Component({
   selector: 'page-home',
@@ -91,5 +92,8 @@ export class HomePage {
     } catch (error) {
       loading.dismiss()
     }
+  }
+  async addPerson(){
+    this.navCtrl.push(AddPersonPage)
   }
 }

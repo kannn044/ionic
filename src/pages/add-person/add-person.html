@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>AddPerson</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list no-line>
+    <ion-item-divider style="text-align: center; font-weight: bold;">
+      ข้อมูลพื้นฐาน
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label fixed>ชื่อ</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>นามสกุล</ion-label>
+      <ion-input type="text" [(ngModel)]="lname"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>เพศ</ion-label>
+      <ion-select [(ngModel)]="sex">
+        <ion-option value="ชาย">ชาย</ion-option>
+        <ion-option value="หญิง">หญิง</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>TypeArea</ion-label>
+      <ion-select [(ngModel)]="tarea">
+        <ion-option value="1">ในเขตรับผิดชอบ</ion-option>
+        <ion-option value="2">ในเขตแต่ไม่อยู่</ion-option>
+        <ion-option value="3">นอกเขตแต่มาอาศัยอยู่</ion-option>
+        <ion-option value="4">นอกเขต</ion-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  
+  <button ion-button round block color="secondary" [disabled]="!name||!lname||!sex||!tarea" (click)="save()">บันทึก</button>
+  <button ion-button round block color="danger">ยกเลิก</button>
+</ion-content>

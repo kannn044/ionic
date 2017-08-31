@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
+import { AddPersonPageModule } from '../pages/add-person/add-person.module';
 
 import { DetailPageModule } from '../pages/detail/detail.module';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
@@ -29,7 +30,8 @@ import { LoginProvider } from '../providers/login/login';
     DashboardPageModule,
     SettingPageModule,
     HttpModule,
-    LoginPageModule
+    LoginPageModule,
+    AddPersonPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
