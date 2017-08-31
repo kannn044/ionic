@@ -18,4 +18,10 @@ export class AvatarProvider {
     const resp = await this.http.get(url).toPromise()
     return resp.json() 
   }
+  async search(query: string){
+    const token = localStorage.getItem('token')
+    const url = `http://192.168.100.116:3000/api/person/search?query=${query}&token=${token}`
+    const resp = await this.http.get(url).toPromise()
+    return resp.json() 
+  }
 }

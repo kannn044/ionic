@@ -76,4 +76,20 @@ export class HomePage {
       // An error occurred
     });
   }
+  async search(event) {
+    // console.log(event.target.value)
+    const loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    })
+    const query = event.target.value
+    try {
+      this.avatars = []
+      // loading.present()
+      const resp = await this.avatarProvider.search(query)
+      this.avatars = resp
+      loading.dismiss()
+    } catch (error) {
+      loading.dismiss()
+    }
+  }
 }
